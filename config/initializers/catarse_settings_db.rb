@@ -1,0 +1,1 @@
+::CatarseSettings = CatarseSettingsDb::Setting
