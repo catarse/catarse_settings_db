@@ -29,11 +29,7 @@ module CatarseSettingsDb
       end
 
       def set key, value
-        begin
-          find_by_name(key).update_attribute :value, value
-        rescue
-          create!(name: key, value: value)
-        end
+        find_or_create_by!(name: key).update(value: value)
         Rails.cache.write("/configurations/#{key}", value)
         value
       end
