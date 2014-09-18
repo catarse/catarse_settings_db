@@ -21,10 +21,14 @@ module CatarseSettingsDb
         set key, value
       end
 
+      def get_without_cache(key)
+        find_by_name(key).value rescue nil
+      end
+
       private
       def get key
         Rails.cache.fetch("/configurations/#{key}") do
-          find_by_name(key).value rescue nil
+          get_without_cache(key)
         end
       end
 

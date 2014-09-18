@@ -11,6 +11,17 @@ describe CatarseSettingsDb::Setting do
     expect(@config).to be_valid
   end
 
+  context "#get_without_cache" do
+    before do
+      @config.save
+      CatarseSettingsDb::Setting.create(name: 'other_config', value: 'another_value')
+    end
+
+    it "should get config" do
+      expect(CatarseSettingsDb::Setting.get_without_cache(:a_config)).to eq 'a_value'
+    end
+  end
+
   context "#get" do
     before do
       @config.save
