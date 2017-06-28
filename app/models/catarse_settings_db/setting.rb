@@ -27,14 +27,11 @@ module CatarseSettingsDb
 
       private
       def get key
-        Rails.cache.fetch("/configurations/#{key}") do
-          get_without_cache(key)
-        end
+        get_without_cache(key)
       end
 
       def set key, value
         find_or_create_by!(name: key).update(value: value)
-        Rails.cache.write("/configurations/#{key}", value)
         value
       end
 
