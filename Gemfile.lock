@@ -45,7 +45,7 @@ GEM
     arel (6.0.3)
     builder (3.2.2)
     concurrent-ruby (1.0.5)
-    database_cleaner (1.4.1)
+    database_cleaner (1.8.5)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     globalid (0.4.0)
